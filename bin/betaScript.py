@@ -55,12 +55,15 @@ if __name__ == "__main__":
     
     BTC_long["SMA25"] = ta.SMA(BTC["Close"], timeperiod = 200)
     
-    BTC["SMA5"] = ta.SMA(BTC["Close"], timeperiod = 5)
-    BTC["SMA20"] = ta.SMA(BTC["Close"], timeperiod = 200)
-    BTC["SMA200"] = ta.SMA(BTC["Close"], timeperiod = 200)
+    BTC["SMA5"] = ta.SMA(BTC["Close"].values, timeperiod = 5)
+    BTC["SMA20"] = ta.SMA(BTC["Close"].values, timeperiod = 20)
+    BTC["SMA50"] = ta.SMA(BTC["Close"].values, timeperiod = 50)
+    BTC["SMA200"] = ta.SMA(BTC["Close"].values, timeperiod = 200)
 
-    BTC["ATR"] = ta.ATR(BTC["High"], BTC["Low"], BTC["Close"], timeperiod = 20)
-    BTC["BBUp"], BTC["BBMid"], BTC["BBLow"] = ta.BBANDS(BTC["Close"], timeperiod=20, nbdevup=2, nbdevdn=2, matype=ta.MA_Type.SMA)
+ 
+
+    BTC["ATR"] = ta.ATR(BTC["High"].values, BTC["Low"].values, BTC["Close"].values, timeperiod = 20)
+    BTC["BBUp"], BTC["BBMid"], BTC["BBLow"] = ta.BBANDS(BTC["Close"].values, timeperiod=20, nbdevup=2, nbdevdn=2, matype=ta.MA_Type.SMA)
     
     
     BTC["SMA200"].plot()
@@ -70,4 +73,23 @@ if __name__ == "__main__":
     decomp.plot()
     decomp = seasonal_decompose(BTC["Close"], freq = 48*30, model = "multiplicative")
     decomp.plot()
+    
+    candlePlot(BTC)
+    # trend finding
+    BTC["TEMA50"] = ta.TEMA(BTC["Close"].values, timeperiod = 100)
+    BTC["TEMA200"] = ta.TEMA(BTC["Close"].values, timeperiod = 400)
+    BTC["TEMA50"].plot()
+    BTC["TEMA200"].plot()
+    BTC["Close"].plot()
+    bollingerPlot(BTC)
+    
+    BTC["SMA50"].plot()
+    BTC["SMA200"].plot()
+    BTC["Close"].plot()
+    bollingerPlot(BTC)
+    
+
+    BTC["SMA200"].plot()
+    BTC["Close"].plot()
+    bollingerPlot(BTC)
     
