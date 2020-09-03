@@ -1,0 +1,6 @@
+https://github.com/joaomlneto/jekyll-multiverse-template
+https://github.com/squarezero/squarezero.github.io
+https://github.com/madforjekyll/madforjekyll.github.io
+https://github.com/ElasticDesigns/jekyll-lens
+https://github.com/jekyllup/jekyll-theme-massively
+https://github.com/hoffli/saigon-jekyll-theme
