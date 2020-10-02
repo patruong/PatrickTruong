@@ -1,0 +1,12 @@
+I"Ð	<h1 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h1>
+<p>The PCA is a statstical method that uses an orthogonal transformation to convert a set of possibly correlated variables into a set of values of linearly uncorrelated variables called principal components. The number of principal components is less than or equal to the number of original variables. The transformation is done in such a way that the first principal component captures tha largest possible variance, and each succeeding component in turn captures the largest variance possible under the contraint that it is orthogonal (or uncorrelated) with the preceding components. PCA is sensitive to the relative scaling of the original variables, therefor data used with the PCA needs to be normalized.</p>
+
+<h1 id="independent-component-analysis-ica">Independent Component Analysis (ICA)</h1>
+<p>The ICA is a statistical method to find the hidden factors (or latent variables) that yields a set of random variables, measures or signals. The ICA assumes data is multivariate and defines a generative model for the observed data. By the multivariate assumption it is understood that the observed data is a linear mixture of some unknown latent variable, where the latent variables are assumed non-gaussian and mutually independent. The latent variables are the independent components (often called sources or factors found by ICA) of the observed data. The method is often able to identify underlying factors where FA and PCA fail. The ICA is commonly used in signals processing since it aims to capture the underlying independent components of the data.</p>
+
+<h1 id="ica-vs-pca">ICA vs PCA</h1>
+<p>Both PCA and ICA are dimensionality reduction methods to find a set of vectors for the data, that are a linear combination of the basis. In PCA the basis are the vectors that best captures the variance of the data. In ICA the basis are vectors that are independent component of the data. Imagine that the data is a mix of signals and then the ICA basis will have vectors for each independent signal, while the PCA components will capture the variance in descending order, where the components are orthogonal (i.e. uncorrelated).</p>
+
+<p>In a practical sense, the PCA could be used to find a reduced-rank representation of the data and the ICA could be used to find a representation of the data as independent sub-elements. In other words, the PCA attempts to compress the data and the ICA attempts to seperate the data.</p>
+
+:ET
