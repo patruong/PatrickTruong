@@ -1,0 +1,72 @@
+I"P<h1 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h1>
+<p>The PCA is a statstical method that uses an orthogonal transformation to convert a set of possibly correlated variables into a set of values of linearly uncorrelated variables called principal components. The number of principal components is less than or equal to the number of original variables. The transformation is done in such a way that the first principal component captures tha largest possible variance, and each succeeding component in turn captures the largest variance possible under the contraint that it is orthogonal (or uncorrelated) with the preceding components. PCA is sensitive to the relative scaling of the original variables, therefor data used with the PCA needs to be normalized.</p>
+
+<h1 id="independent-component-analysis-ica">Independent Component Analysis (ICA)</h1>
+<p>The ICA is a statistical method to find the hidden factors (or latent variables) that yields a set of random variables, measures or signals. The ICA assumes data is multivariate and defines a generative model for the observed data. By the multivariate assumption it is understood that the observed data is a linear mixture of some unknown latent variable, where the latent variables are assumed non-gaussian and mutually independent. The latent variables are the independent components (often called sources or factors found by ICA) of the observed data. The method is often able to identify underlying factors where FA and PCA fail. The ICA is commonly used in signals processing since it aims to capture the underlying independent components of the data.</p>
+
+<h1 id="ica-vs-pca">ICA vs PCA</h1>
+<p>Both PCA and ICA are dimensionality reduction methods to find a set of vectors for the data, that are a linear combination of the basis. In PCA the basis are the vectors that best captures the variance of the data. In ICA the basis are vectors that are independent component of the data. Imagine that the data is a mix of signals and then the ICA basis will have vectors for each independent signal, while the PCA components will capture the variance in descending order, where the components are orthogonal (i.e. uncorrelated).</p>
+
+<p>In a practical sense, the PCA could be used to find a reduced-rank representation of the data and the ICA could be used to find a representation of the data as independent sub-elements. In other words, the PCA attempts to compress the data and the ICA attempts to seperate the data.</p>
+
+<pre><code class="language-print(__doc__)">
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
+
+from sklearn.decomposition import FastICA, PCA
+
+</code></pre>
+<h1>#############################################################################</h1>
+<h1 id="generate-sample-data">Generate sample data</h1>
+<p>np.random.seed(0)
+n_samples = 2000
+time = np.linspace(0, 8, n_samples)</p>
+
+<p>s1 = np.sin(2 * time)  # Signal 1 : sinusoidal signal
+s2 = np.sign(np.sin(3 * time))  # Signal 2 : square signal
+s3 = signal.sawtooth(2 * np.pi * time)  # Signal 3: saw tooth signal</p>
+
+<p>S = np.c_[s1, s2, s3]
+S += 0.2 * np.random.normal(size=S.shape)  # Add noise</p>
+
+<p>S /= S.std(axis=0)  # Standardize data</p>
+<h1 id="mix-data">Mix data</h1>
+<p>A = np.array([[1, 1, 1], [0.5, 2, 1.0], [1.5, 1.0, 2.0]])  # Mixing matrix
+X = np.dot(S, A.T)  # Generate observations</p>
+
+<h1 id="compute-ica">Compute ICA</h1>
+<p>ica = FastICA(n_components=3)
+S_ = ica.fit_transform(X)  # Reconstruct signals
+A_ = ica.mixing_  # Get estimated mixing matrix</p>
+
+<h1 id="we-can-prove-that-the-ica-model-applies-by-reverting-the-unmixing">We can <code class="language-plaintext highlighter-rouge">prove</code> that the ICA model applies by reverting the unmixing.</h1>
+<p>assert np.allclose(X, np.dot(S_, A_.T) + ica.mean_)</p>
+
+<h1 id="for-comparison-compute-pca">For comparison, compute PCA</h1>
+<p>pca = PCA(n_components=3)
+H = pca.fit_transform(X)  # Reconstruct signals based on orthogonal components</p>
+
+<h1 id="-1">#############################################################################</h1>
+<h1 id="plot-results">Plot results</h1>
+
+<p>plt.figure()</p>
+
+<p>models = [X, S, S_, H]
+names = [‘Observations (mixed signal)’,
+         ‘True Sources’,
+         ‘ICA recovered signals’,
+         ‘PCA recovered signals’]
+colors = [‘red’, ‘steelblue’, ‘orange’]</p>
+
+<p>for ii, (model, name) in enumerate(zip(models, names), 1):
+    plt.subplot(4, 1, ii)
+    plt.title(name)
+    for sig, color in zip(model.T, colors):
+        plt.plot(sig, color=color)</p>
+
+<p>plt.subplots_adjust(0.09, 0.04, 0.94, 0.94, 0.26, 0.46)
+plt.show()```</p>
+
+<p>test</p>
+:ET
