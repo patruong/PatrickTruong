@@ -1,18 +1,22 @@
-- name: A proteome study of life and death of cells. 
-  image: https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_960_720.jpg
+- name: A proteome study of life and death of cells 
+  #image: https://cdn.pixabay.com/photo/2015/01/08/18/27/startup-593341_960_720.jpg
+  image: https://pixabay.com/get/54e4d6404a52a914f6d1867dda353678153cdee353567849_1920.jpg
   link: https://patruong.github.io/lifeAndDeath/
   description: How many ways to die? 
-- name: Statistical validation of isotopic ratios.
+- name: Statistical validation of isotopic ratios
   link: https://patruong.github.io/isoMS/
-  image: https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg
+  #image: https://cdn.pixabay.com/photo/2015/01/09/11/08/startup-594090_960_720.jpg
+  image: https://pixabay.com/get/52e7d4424952ae14f6d1867dda353678153cdee35253764b_1920.jpg
   description:  
-- name: Bayesian vs. Frequentist approach to protein quantification.
+- name: Bayesian vs. Frequentist approach to protein quantification
   link: https://patruong.github.io/bayesMS/
-  image: https://cdn.pixabay.com/photo/2016/06/25/12/55/art-1478831_960_720.jpg
+  #image: https://cdn.pixabay.com/photo/2016/06/25/12/55/art-1478831_960_720.jpg
+  image : https://lacol.net/wp-content/uploads/2018/09/bayesia-no-words-wordpreess-4-750x410.jpg
   description: 
-- name: An analysis of spectral variation of mass spectrometry-based proteomics data.
+- name: An analysis of spectral variation of mass spectrometry-based proteomics data
   link: https://patruong.github.io/specVar/
-  image: https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg
+  #image: https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_960_720.jpg
+  image: https://journals.plos.org/ploscompbiol/article/figure/image?id=10.1371/journal.pcbi.1002277.g004&size=large
   description:
 - name: Fifth Project
   link:
